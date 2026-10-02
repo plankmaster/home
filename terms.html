@@ -43,6 +43,11 @@
       overflow-wrap: break-word;
     }
 
+    a {
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
     body {
       background-color: var(--bg-dark);
       background-image: radial-gradient(circle 400px at 50% -80px, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
@@ -306,6 +311,17 @@
       border-radius: 12px;
       font-size: 0.92rem;
       color: var(--text-muted);
+      align-items: flex-start;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .bullet-item > div {
+      min-width: 0;
+      flex: 1;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .bullet-item strong {
@@ -315,6 +331,25 @@
     .bullet-icon {
       color: var(--amber);
       font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .contact-card .contact-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-white);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .contact-card .contact-link {
+      color: var(--amber);
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-size: 0.9rem;
     }
 
     /* Footer */
@@ -639,13 +674,19 @@
             Nếu bạn có bất kỳ câu hỏi nào về Điều Khoản Dịch Vụ, khôi phục gói Pro hoặc cần hỗ trợ kỹ thuật:
           </p>
           <ul class="bullet-list">
-            <li class="bullet-item">
+            <li class="bullet-item contact-card">
               <span class="bullet-icon">📧</span>
-              <div><strong>Email Hỗ Trợ:</strong> <a href="mailto:support@plankmaster.app" style="color: var(--amber);">support@plankmaster.app</a></div>
+              <div>
+                <strong class="contact-label">Email Hỗ Trợ:</strong>
+                <a href="mailto:support@plankmaster.app" class="contact-link">support@plankmaster.app</a>
+              </div>
             </li>
-            <li class="bullet-item">
+            <li class="bullet-item contact-card">
               <span class="bullet-icon">🌐</span>
-              <div><strong>Website:</strong> <a href="https://plankmaster.github.io/home/" style="color: var(--amber);">https://plankmaster.github.io/home/</a></div>
+              <div>
+                <strong class="contact-label">Website:</strong>
+                <a href="https://plankmaster.github.io/home/" class="contact-link" target="_blank" rel="noopener">https://plankmaster.github.io/home/</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -654,13 +695,19 @@
             If you have questions regarding these Terms, Pro restore assistance, or support requests:
           </p>
           <ul class="bullet-list">
-            <li class="bullet-item">
+            <li class="bullet-item contact-card">
               <span class="bullet-icon">📧</span>
-              <div><strong>Support Email:</strong> <a href="mailto:support@plankmaster.app" style="color: var(--amber);">support@plankmaster.app</a></div>
+              <div>
+                <strong class="contact-label">Support Email:</strong>
+                <a href="mailto:support@plankmaster.app" class="contact-link">support@plankmaster.app</a>
+              </div>
             </li>
-            <li class="bullet-item">
+            <li class="bullet-item contact-card">
               <span class="bullet-icon">🌐</span>
-              <div><strong>Website:</strong> <a href="https://plankmaster.github.io/home/" style="color: var(--amber);">https://plankmaster.github.io/home/</a></div>
+              <div>
+                <strong class="contact-label">Website:</strong>
+                <a href="https://plankmaster.github.io/home/" class="contact-link" target="_blank" rel="noopener">https://plankmaster.github.io/home/</a>
+              </div>
             </li>
           </ul>
         </div>
