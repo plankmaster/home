@@ -34,10 +34,19 @@
     html, body {
       touch-action: manipulation;
       -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+    }
+
+    a, p, span, li, h1, h2, h3 {
+      overflow-wrap: break-word;
     }
 
     body {
       background-color: var(--bg-dark);
+      background-image: radial-gradient(circle 500px at 50% -100px, rgba(6, 182, 212, 0.16) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%);
+      background-repeat: no-repeat;
       color: var(--text-white);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
@@ -45,21 +54,6 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Ambient Lighting - absolute to avoid floating during mobile scrolling */
-    body::before {
-      content: "";
-      position: absolute;
-      top: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .container {
@@ -464,6 +458,13 @@
     }
 
     @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+        max-width: 100%;
+      }
+      .features-grid, .pillars-grid {
+        grid-template-columns: 1fr;
+      }
       .nav-wrapper {
         height: 58px;
         padding: 0 4px;
