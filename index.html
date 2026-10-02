@@ -89,6 +89,8 @@
       gap: 12px;
       text-decoration: none;
       color: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .brand-img {
@@ -97,12 +99,14 @@
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 4px 16px rgba(6, 182, 212, 0.25);
+      flex-shrink: 0;
     }
 
     .brand-title {
       font-weight: 900;
       font-size: 1.15rem;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
     .brand-subtitle {
@@ -110,12 +114,15 @@
       color: var(--cyan);
       font-weight: 700;
       letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     .nav-controls {
       display: flex;
       align-items: center;
       gap: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-link {
@@ -125,6 +132,7 @@
       font-weight: 600;
       padding: 8px 14px;
       border-radius: 10px;
+      white-space: nowrap;
       transition: all 0.2s;
     }
 
@@ -145,6 +153,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
       transition: all 0.2s;
     }
 
@@ -415,19 +424,33 @@
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-bottom: 12px;
     }
 
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 600;
+      white-space: nowrap;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
       color: var(--cyan);
+    }
+
+    .footer-contact {
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+    }
+
+    .footer-contact a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
     }
 
     /* Language Switching Visibility */
@@ -437,18 +460,62 @@
     }
 
     @media (max-width: 640px) {
+      .nav-wrapper {
+        height: 60px;
+        padding: 0 4px;
+      }
+      .brand {
+        gap: 8px;
+      }
+      .brand-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+      }
+      .brand-title {
+        font-size: 0.95rem;
+      }
+      .brand-subtitle {
+        display: none !important;
+      }
+      .nav-controls {
+        gap: 4px;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+        padding: 5px 8px;
+        border-radius: 6px;
+      }
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+      }
+      .hero {
+        padding: 28px 0 20px;
+      }
       .hero-title {
-        font-size: 2.1rem;
+        font-size: 1.85rem;
       }
       .hero-desc {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 24px;
       }
       .hero-actions {
         flex-direction: column;
+        gap: 12px;
+        margin-bottom: 36px;
       }
       .btn-primary, .btn-secondary {
         width: 100%;
         justify-content: center;
+        padding: 12px 20px;
+      }
+      .footer-links {
+        gap: 8px 14px;
+        font-size: 0.82rem;
+      }
+      .footer-links .bullet {
+        display: none;
       }
     }
   </style>
@@ -645,12 +712,13 @@
     <div class="container">
       <div class="footer-links">
         <a href="index.html"><span class="lang-vi">Trang Chủ</span><span class="lang-en">Home</span></a>
-        <span>•</span>
+        <span class="bullet">•</span>
         <a href="privacy.html"><span class="lang-vi">Quyền Riêng Tư</span><span class="lang-en">Privacy Policy</span></a>
-        <span>•</span>
+        <span class="bullet">•</span>
         <a href="terms.html"><span class="lang-vi">Điều Khoản Dịch Vụ</span><span class="lang-en">Terms of Service</span></a>
-        <span>•</span>
-        <a href="mailto:support@plankmaster.app">support@plankmaster.app</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:support@plankmaster.app">📧 support@plankmaster.app</a>
       </div>
       <p>© 2026 Plank Master: Core & Fitness. All rights reserved.</p>
     </div>
