@@ -2,6 +2,26 @@
 <html lang="vi" data-lang="vi">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const themeParam = urlParams.get('theme');
+      const savedTheme = localStorage.getItem('pm_theme');
+      const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+      let targetTheme = 'dark';
+      if (themeParam === 'light' || themeParam === 'dark') {
+        targetTheme = themeParam;
+        localStorage.setItem('pm_theme', themeParam);
+      } else if (savedTheme === 'light' || savedTheme === 'dark') {
+        targetTheme = savedTheme;
+      } else if (systemPrefersLight) {
+        targetTheme = 'light';
+      }
+
+      document.documentElement.setAttribute('data-theme', targetTheme);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Chính Sách Quyền Riêng Tư | Plank Master: Core & Fitness</title>
   <meta name="description" content="Chính sách quyền riêng tư và cam kết bảo vệ dữ liệu người dùng của ứng dụng Plank Master - Tuân thủ chuẩn Apple App Store, Google Play và GDPR.">
@@ -10,19 +30,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #0B1120;
+    :root,
+    html[data-theme="dark"] {
+      --bg-page: #0B1120;
+      --bg-radial: radial-gradient(circle 400px at 50% -80px, rgba(6, 182, 212, 0.14) 0%, transparent 70%);
       --card-bg: #131D33;
       --card-border: rgba(255, 255, 255, 0.08);
       --card-border-hover: rgba(6, 182, 212, 0.3);
+      --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      --item-bg: rgba(255, 255, 255, 0.02);
+      --item-border: rgba(255, 255, 255, 0.04);
+      --header-bg: #0B1120;
+      --header-border: rgba(255, 255, 255, 0.08);
+      --footer-border: rgba(255, 255, 255, 0.08);
+
       --cyan: #06B6D4;
       --cyan-glow: rgba(6, 182, 212, 0.15);
+      --cyan-border: rgba(6, 182, 212, 0.2);
       --emerald: #10B981;
       --emerald-glow: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(16, 185, 129, 0.3);
       --amber: #F59E0B;
-      --text-white: #F8FAFC;
-      --text-muted: #94A3B8;
+      --amber-glow: rgba(245, 158, 11, 0.15);
+      --amber-border: rgba(245, 158, 11, 0.3);
+
+      --text-title: #FFFFFF;
+      --text-body: #94A3B8;
       --text-sub: #64748B;
+      --text-muted: #94A3B8;
+      --btn-bg: rgba(255, 255, 255, 0.05);
+      --btn-border: rgba(255, 255, 255, 0.08);
+      --btn-hover: rgba(255, 255, 255, 0.1);
+      --guarantee-bg: rgba(239, 68, 68, 0.08);
+      --guarantee-border: rgba(239, 68, 68, 0.25);
+      --guarantee-text: #FCA5A5;
+      --highlight-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%);
+      --highlight-border: rgba(16, 185, 129, 0.25);
+    }
+
+    html[data-theme="light"] {
+      --bg-page: #F8FAFC; /* Slate 50 anti-glare */
+      --bg-radial: none; /* Tắt vầng sáng mờ loang lổ */
+      --card-bg: #FFFFFF; /* Pure White card trên nền Slate 50 */
+      --card-border: #E2E8F0; /* Slate 200 */
+      --card-border-hover: rgba(8, 145, 178, 0.35);
+      --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+      --item-bg: #F8FAFC;
+      --item-border: #E2E8F0;
+      --header-bg: #FFFFFF;
+      --header-border: #E2E8F0;
+      --footer-border: #E2E8F0;
+
+      /* Accent Colors adjusted for high contrast on light background */
+      --cyan: #0891B2; /* Deep Oceanic Teal (WCAG AAA) */
+      --cyan-glow: rgba(8, 145, 178, 0.1);
+      --cyan-border: rgba(8, 145, 178, 0.25);
+      --emerald: #059669; /* Rich Emerald */
+      --emerald-glow: rgba(5, 150, 105, 0.1);
+      --emerald-border: rgba(5, 150, 105, 0.25);
+      --amber: #D97706; /* Rich Amber */
+      --amber-glow: rgba(217, 119, 6, 0.1);
+      --amber-border: rgba(217, 119, 6, 0.25);
+
+      /* Typography: Không dùng #000 đen tuyền để chống gắt mắt */
+      --text-title: #0F172A; /* Slate 900 */
+      --text-body: #475569; /* Slate 600 dịu mắt khi đọc lâu */
+      --text-sub: #64748B; /* Slate 500 */
+      --text-muted: #64748B;
+      --btn-bg: #F1F5F9;
+      --btn-border: #E2E8F0;
+      --btn-hover: #E2E8F0;
+      --guarantee-bg: rgba(239, 68, 68, 0.06);
+      --guarantee-border: rgba(239, 68, 68, 0.2);
+      --guarantee-text: #DC2626;
+      --highlight-bg: linear-gradient(135deg, rgba(5, 150, 105, 0.06) 0%, rgba(8, 145, 178, 0.04) 100%);
+      --highlight-border: rgba(5, 150, 105, 0.2);
     }
 
     * {
@@ -49,16 +131,17 @@
     }
 
     body {
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(circle 400px at 50% -80px, rgba(6, 182, 212, 0.14) 0%, transparent 70%);
+      background-color: var(--bg-page);
+      background-image: var(--bg-radial);
       background-repeat: no-repeat;
-      color: var(--text-white);
+      color: var(--text-body);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.65;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .container {
@@ -70,13 +153,14 @@
       z-index: 1;
     }
 
-    /* Navigation Header - 100% solid background so scrolled content does not bleed through */
+    /* Navigation Header - Solid background so scrolled content does not bleed through */
     header {
-      border-bottom: 1px solid var(--card-border);
-      background: #0B1120;
+      border-bottom: 1px solid var(--header-border);
+      background: var(--header-bg);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-wrapper {
@@ -100,8 +184,8 @@
       width: 40px;
       height: 40px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 12px var(--cyan-glow);
       flex-shrink: 0;
     }
 
@@ -110,6 +194,7 @@
       font-size: 1.1rem;
       letter-spacing: -0.02em;
       white-space: nowrap;
+      color: var(--text-title);
     }
 
     .brand-subtitle {
@@ -127,10 +212,34 @@
       flex-shrink: 0;
     }
 
+    .theme-btn {
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      color: var(--text-title);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .theme-btn:hover {
+      background: var(--btn-hover);
+      border-color: var(--cyan);
+      transform: scale(1.08);
+    }
+
     .lang-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-white);
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      color: var(--text-title);
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.82rem;
@@ -144,7 +253,7 @@
     }
 
     .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--btn-hover);
       border-color: var(--cyan);
       color: var(--cyan);
     }
@@ -162,7 +271,7 @@
 
     .nav-link:hover {
       color: var(--cyan);
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--btn-bg);
     }
 
     .nav-link.active {
@@ -187,7 +296,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       background: var(--emerald-glow);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid var(--emerald-border);
       color: var(--emerald);
       margin-bottom: 16px;
     }
@@ -201,6 +310,13 @@
       background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    html[data-theme="light"] .hero-title {
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      color: var(--text-title);
     }
 
     .hero-meta {
@@ -220,20 +336,21 @@
 
     /* Core Commitment Box */
     .highlight-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%);
-      border: 1px solid rgba(16, 185, 129, 0.25);
+      background: var(--highlight-bg);
+      border: 1px solid var(--highlight-border);
       border-radius: 20px;
       padding: 24px;
       margin: 28px 0;
       display: flex;
       gap: 18px;
       align-items: flex-start;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .highlight-icon {
       font-size: 1.8rem;
       background: var(--emerald-glow);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid var(--emerald-border);
       width: 48px;
       height: 48px;
       border-radius: 14px;
@@ -252,7 +369,7 @@
 
     .highlight-text p {
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: var(--text-body);
       line-height: 1.6;
     }
 
@@ -263,7 +380,8 @@
       border-radius: 24px;
       padding: 36px 32px;
       margin-bottom: 48px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .section {
@@ -277,7 +395,7 @@
     .section-title {
       font-size: 1.25rem;
       font-weight: 800;
-      color: var(--text-white);
+      color: var(--text-title);
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -289,13 +407,13 @@
       font-size: 0.85rem;
       color: var(--cyan);
       background: var(--cyan-glow);
-      border: 1px solid rgba(6, 182, 212, 0.2);
+      border: 1px solid var(--cyan-border);
       padding: 2px 8px;
       border-radius: 6px;
     }
 
     .section p {
-      color: var(--text-muted);
+      color: var(--text-body);
       font-size: 0.95rem;
       line-height: 1.7;
       margin-bottom: 12px;
@@ -315,16 +433,17 @@
     .bullet-item {
       display: flex;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: var(--item-bg);
+      border: 1px solid var(--item-border);
       padding: 12px 16px;
       border-radius: 12px;
       font-size: 0.92rem;
-      color: var(--text-muted);
+      color: var(--text-body);
       align-items: flex-start;
       min-width: 0;
       max-width: 100%;
       overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     .bullet-item > div {
@@ -335,7 +454,7 @@
     }
 
     .bullet-item strong {
-      color: var(--text-white);
+      color: var(--text-title);
     }
 
     .bullet-icon {
@@ -348,7 +467,7 @@
     .contact-card .contact-label {
       display: block;
       margin-bottom: 4px;
-      color: var(--text-white);
+      color: var(--text-title);
       font-weight: 700;
       font-size: 0.95rem;
     }
@@ -363,27 +482,29 @@
     }
 
     .guarantee-box {
-      background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.25);
+      background: var(--guarantee-bg);
+      border: 1px solid var(--guarantee-border);
       border-radius: 14px;
       padding: 14px 18px;
       margin-top: 14px;
       font-size: 0.92rem;
-      color: #FCA5A5;
+      color: var(--guarantee-text);
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid var(--footer-border);
       padding: 36px 0;
       margin-top: auto;
       text-align: center;
       color: var(--text-sub);
       font-size: 0.85rem;
+      transition: border-color 0.3s ease;
     }
 
     .footer-links {
@@ -457,6 +578,11 @@
       .nav-controls {
         gap: 6px;
       }
+      .theme-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.92rem;
+      }
       .nav-link-desktop {
         display: none !important;
       }
@@ -464,7 +590,7 @@
         font-size: 0.8rem;
         padding: 6px 10px;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--btn-bg);
       }
       .lang-btn {
         padding: 5px 9px;
@@ -516,6 +642,9 @@
           <span class="lang-vi">📄 Điều Khoản</span>
           <span class="lang-en">📄 Terms</span>
         </a>
+        <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi giao diện Sáng / Tối" aria-label="Toggle theme">
+          <span id="themeBtnIcon">☀️</span>
+        </button>
         <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">
           🌐 <span id="langBtnText">EN</span>
         </button>
@@ -814,6 +943,44 @@
   </footer>
 
   <script>
+    // --- THEME MANAGEMENT ---
+    function updateThemeUI(theme) {
+      const btnIcon = document.getElementById('themeBtnIcon');
+      if (btnIcon) {
+        // Dark mode shows Sun (to switch to light), Light mode shows Moon (to switch to dark)
+        btnIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('pm_theme', theme);
+      updateThemeUI(theme);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    }
+
+    // Initialize Theme UI icon on page load
+    (function() {
+      const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      updateThemeUI(activeTheme);
+
+      // Listen to OS theme changes if user has not set an explicit override
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (!urlParams.get('theme') && !localStorage.getItem('pm_theme')) {
+            setTheme(e.matches ? 'light' : 'dark');
+          }
+        });
+      }
+    })();
+
+    // --- LANGUAGE MANAGEMENT ---
     function setLanguage(lang) {
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
