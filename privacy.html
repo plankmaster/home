@@ -733,7 +733,7 @@
             </li>
             <li class="bullet-item">
               <span class="bullet-icon">🛡️</span>
-              <div><strong>Quyền kiểm soát sao lưu hồ sơ cá nhân:</strong> Bạn có toàn quyền chủ động bật hoặc tắt tùy chọn sao lưu các chỉ số cơ thể (cân nặng, chiều cao, giới tính, tên/biệt danh) lên đám mây trong Cài Đặt. Khi tắt, các thông tin này chỉ lưu 100% cục bộ trên thiết bị của bạn. Toàn bộ thành tích thể thao (Kỷ lục cá nhân PR, tổng thời gian gồng) và lịch sử bài tập vẫn được lưu giữ an toàn.</div>
+              <div><strong>Quyền kiểm soát sao lưu hồ sơ cá nhân:</strong> Khi bạn kích hoạt đồng bộ đám mây, tùy chọn sao lưu các chỉ số cơ thể (cân nặng, chiều cao, giới tính, tên/biệt danh) được <em>bật theo mặc định</em> và bảo vệ bằng mã hóa E2EE nhằm đảm bảo hồ sơ của bạn không bị mất hay gián đoạn khi chuyển sang thiết bị mới. Bạn có toàn quyền chủ động tắt tùy chọn này bất cứ lúc nào trong Cài Đặt. Khi tắt, các thông tin thể trạng này chỉ lưu 100% cục bộ trên thiết bị của bạn, trong khi toàn bộ thành tích thể thao (Kỷ lục cá nhân PR, tổng thời gian gồng) và lịch sử bài tập vẫn được lưu giữ an toàn trên đám mây.</div>
             </li>
             <li class="bullet-item">
               <span class="bullet-icon">✓</span>
@@ -756,7 +756,7 @@
             </li>
             <li class="bullet-item">
               <span class="bullet-icon">🛡️</span>
-              <div><strong>Sovereign Body Profile Backup Control:</strong> You have full sovereign control to toggle cloud backup of personal body metrics (weight, height, gender, nickname) on or off at any time in Cloud Settings. When disabled, these stats remain strictly local on your device. Your sports performance data (Personal Records - PR, total hold duration) and workout history remain safely synced and preserved.</div>
+              <div><strong>Sovereign Body Profile Backup Control:</strong> When cloud synchronization is enabled, backup of personal body metrics (weight, height, gender, nickname) is <em>enabled by default</em> under full E2EE encryption to ensure seamless profile continuity across devices. You maintain full sovereign control to disable this backup at any time in Cloud Settings. When disabled, these body metrics remain strictly local on your device, while your athletic achievements (Personal Records - PR, total hold duration) and workout history remain safely synced to the cloud.</div>
             </li>
             <li class="bullet-item">
               <span class="bullet-icon">✓</span>
@@ -886,6 +886,71 @@
       <section class="section">
         <h2 class="section-title">
           <span class="section-num">05</span>
+          <span class="lang-vi">Dịch Vụ Bên Thứ Ba, Thanh Toán & Mạng Lưới Quảng Cáo</span>
+          <span class="lang-en">Third-Party Services, Payments & Advertising</span>
+        </h2>
+        <div class="lang-vi">
+          <p>
+            Nhằm đảm bảo sự minh bạch tối đa theo tiêu chuẩn App Privacy của Apple App Store và Data Safety của Google Play Store, chúng tôi công khai các dịch vụ bên thứ ba được tích hợp trong ứng dụng:
+          </p>
+          <ul class="bullet-list">
+            <li class="bullet-item">
+              <span class="bullet-icon">📢</span>
+              <div>
+                <strong>Mạng quảng cáo Google Mobile Ads (AdMob):</strong><br>
+                Ứng dụng hiển thị quảng cáo biểu ngữ (Banner) và quảng cáo video nhận thưởng (Rewarded Ads) đối với người dùng tài khoản miễn phí nhằm hỗ trợ chi phí vận hành. SDK AdMob (thuộc Google LLC) có thể xử lý các thông tin kỹ thuật như định danh thiết bị (IDFA/GAID), địa chỉ IP rút gọn và dữ liệu chẩn đoán sự cố theo <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: underline;">Chính sách bảo mật của Google</a>. Đối với người dùng tại Liên minh Châu Âu (EU) và Vương quốc Anh (UK), ứng dụng sử dụng giao diện chuẩn Google UMP (User Messaging Platform) để bạn toàn quyền quyết định đồng ý hoặc từ chối quảng cáo cá nhân hóa. Người dùng có thể nâng cấp gói Premium để loại bỏ hoàn toàn 100% quảng cáo.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-icon">💳</span>
+              <div>
+                <strong>Thanh toán Mua hàng Trong Ứng dụng (In-App Purchases & RevenueCat):</strong><br>
+                Mọi giao dịch thanh toán nâng cấp Premium được điều phối và bảo vệ trực tiếp bởi Apple In-App Purchase (trên iOS) hoặc Google Play Billing (trên Android). Chúng tôi có thể sử dụng giải pháp RevenueCat để xác thực biên lai giao dịch từ Store ở cấp độ máy chủ. Ứng dụng tuyệt đối <strong>KHÔNG</strong> thu thập, không xử lý và không lưu giữ bất kỳ thông tin số thẻ tín dụng, tài khoản ngân hàng nào của bạn.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-icon">🛡️</span>
+              <div>
+                <strong>Cam kết không sử dụng công cụ ghi màn hình / phiên truy cập:</strong><br>
+                Ứng dụng cam kết <strong>KHÔNG</strong> cài đặt bất kỳ công cụ ghi hình phiên truy cập (Session Replay tools như Hotjar, FullStory, Smartlook) và KHÔNG ghi lại thao tác màn hình của bạn. Mọi nhật ký lỗi chỉ được ghi nội bộ trên máy (Local Debug Log) để phục vụ kiểm tra kỹ thuật khi người dùng chủ động cho phép.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="lang-en">
+          <p>
+            To maintain full transparency conforming with Apple App Store Privacy Nutrition Labels and Google Play Data Safety standards, we disclose all third-party SDKs integrated into the app:
+          </p>
+          <ul class="bullet-list">
+            <li class="bullet-item">
+              <span class="bullet-icon">📢</span>
+              <div>
+                <strong>Google Mobile Ads (AdMob):</strong><br>
+                The app presents banner ads and rewarded video ads for free-tier users to sustain development. The AdMob SDK (Google LLC) may process technical identifiers such as Advertising Identifiers (IDFA/GAID), coarse IP addresses, and crash telemetry governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: underline;">Google Privacy Policy</a>. For users residing within the EU and UK, the app implements Google UMP (User Messaging Platform) empowering you to grant or withhold consent for ad personalization. Upgrading to Premium completely removes all advertisements.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-icon">💳</span>
+              <div>
+                <strong>In-App Purchases & RevenueCat:</strong><br>
+                All upgrade transactions are securely handled directly by Apple In-App Purchase (iOS) or Google Play Billing (Android). We may utilize RevenueCat solely for server-side receipt validation. We <strong>NEVER</strong> access, process, or store your payment card numbers or banking credentials.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-icon">🛡️</span>
+              <div>
+                <strong>Zero Session Recording / Screen Replay:</strong><br>
+                We do <strong>NOT</strong> embed any session replay or keystroke recording tools (e.g., FullStory, Hotjar). Any crash or diagnostics logs are held locally on the device (Local Debug Logs) and never transmitted without explicit user consent.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section class="section" id="delete-account">
+        <h2 class="section-title">
+          <span class="section-num">06</span>
           <span class="lang-vi">Quyền Yêu Cầu Xóa Dữ Liệu (Chuẩn GDPR & CCPA)</span>
           <span class="lang-en">Right to Deletion (GDPR & CCPA Compliance)</span>
         </h2>
@@ -909,10 +974,10 @@
         </div>
       </section>
 
-      <!-- SECTION 6 -->
+      <!-- SECTION 7 -->
       <section class="section">
         <h2 class="section-title">
-          <span class="section-num">06</span>
+          <span class="section-num">07</span>
           <span class="lang-vi">Liên Hệ Nhà Phát Triển</span>
           <span class="lang-en">Contact & Developer Inquiries</span>
         </h2>
